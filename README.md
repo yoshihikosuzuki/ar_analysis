@@ -1,19 +1,23 @@
 # ar_analysis
 
-アブノーマルリターンに関する解析
-
-## 各種データの整形
-
-`Reshape data.ipynb`
-
-## プレスリリースと上場企業のマッチング
+プレスリリースのアブノーマルリターンに関する解析
 
 ### データ
 
-* `pressrelease_all.csv`: 全てのプレスリリースのデータ(articleid, date, bodysubのタブ区切り)
-* `listed_company`: 上場企業(企業名辞書で証券コードが存在する企業)のデータ(comp_name, address, sec_codeのタブ区切り)
+`Reshape data.ipynb`で整形
 
-### 目的
+* `pressrelease_all.csv`
+ * 全てのプレスリリースのデータ(articleid, date, bodysubのタブ区切り)
+* `listed_company`
+ * 上場企業(企業名辞書で証券コードが存在する企業)のデータ(comp_name, address, sec_codeのタブ区切り)
+* `kabuka_tse1`
+ * 東証一部の株価データ(マーケットデータがTOPIXしかなかったので東証一部に限定した)
+* `market_tse1`
+ * TOPIXデータ
+ 
+各種データ数等はipynbに記載
+ 
+### プレスリリースと上場企業のマッチング
 
 * `listed_company`をベースにして、プレスリリース本文に企業名(と住所)で検索をかける
   * `Reshape data.ipynb`より、'都', '道', '府', '県'のいずれかを含むエントリーは(高々)全体の63%
