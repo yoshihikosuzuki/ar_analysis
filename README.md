@@ -4,7 +4,8 @@
 
 ### データ
 
-`Reshape data.ipynb`で整形
+`Reshape data.ipynb`で整形した。各種データ数等はipynbに記載してある。
+今回の株価データには株価指数がTOPIXしかなかったので、解析対象は東証一部上場企業に限定した(`listed_company`自体には全ての上場企業が含まれている)。
 
 * `pressrelease_all.csv`
  * 全てのプレスリリースのデータ(articleid, date, bodysubのタブ区切り)
@@ -14,8 +15,6 @@
  * 東証一部の株価データ(マーケットデータがTOPIXしかなかったので東証一部に限定した)
 * `market_tse1`
  * TOPIXデータ
- 
-各種データ数等はipynbに記載
  
 ### プレスリリースと上場企業のマッチング
 
