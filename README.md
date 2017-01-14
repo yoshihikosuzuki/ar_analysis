@@ -47,5 +47,5 @@
  1. (欠損値を除いた)前日との株価の比(return)を計算
  2. (-246, -30)のreturnデータでTOPIX - 企業間の線形回帰モデル作成
  3. モデルを(-1, 1)に適用し、指定された日付前後のexpected returnを計算
- 4. 実際のreturnとの差を取り(abnormal return)、(-1, 1)での和(cumulative abnormal return)を返す
- * 手法として古い可能性がある？
+ 4. 実際のreturnとの差を取り(abnormal return)、その(-1, 1)での和(cumulative abnormal return)を返す
+* 手法として古い可能性がある？
