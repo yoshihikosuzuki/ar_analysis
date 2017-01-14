@@ -41,4 +41,7 @@
 
 ### アブノーマルリターンの計算
 
-[PythonFinance](https://github.com/danielfrg/PythonFinance)の`events/EventStudy.py`をベースに実装した。
+* (プレスリリースが出た)日付を指定すると、(-246, -30)[日]の区間と(-1, 2)の区間でのその企業とTOPIXの株価データをロードして、アブノーマルリターンを計算
+ * 企業の株価データには欠損値を含むものがあるが、日数は欠損値を除いて計上した(日付はTOPIXと合わせてある)
+* アブノーマルリターン計算には[PythonFinance](https://github.com/danielfrg/PythonFinance)の`events/EventStudy.py`を参考にした
+ * 手法として古い可能性がある？
