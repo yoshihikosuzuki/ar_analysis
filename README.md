@@ -38,3 +38,7 @@
 * 短くて複雑度の低い企業名で、かつ住所が都内だったりするとfalse-positive hitが起こりやすい
  * 都内は区名の次まで検索したいが、区名までしか記載していないことも多い。。
  * 企業名と住所が近くにあることの判定？思い切って複雑どの低い企業名を取り除く？
+
+### アブノーマルリターンの計算
+
+[PythonFinance](https://github.com/danielfrg/PythonFinance)の`events/EventStudy.py`をベースに実装した。
