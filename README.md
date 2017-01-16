@@ -74,3 +74,7 @@
 * 平均値の降順に各タイプを並べたものは以下の表の通り
 
 <img src=https://qiita-image-store.s3.amazonaws.com/0/81825/0fd33507-3987-98f0-a567-e3c2569bd1b2.jpeg width=1000px>
+
+### doc2vecを使った簡単な分析
+
+articleid: CARの情報がある時に、articleid -> bodysub -> doc2vec(bodysub): CARとして、プレスリリース本文とCARの値の関係性を述べたい。
