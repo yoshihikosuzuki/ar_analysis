@@ -49,6 +49,7 @@
  3. モデルを(-1, 1)に適用し、指定された日付前後のexpected returnを計算
  4. 実際のreturnとの差を取り(abnormal return)、その(-1, 1)での和(cumulative abnormal return)を返す
 * 手法として古い可能性がある？
+* 同一日、同一企業に複数のプレスリリースがある場合に考慮できていない
 
 計算結果は`car`に記載(プレスリリースID、証券コード、cumulative abnormal returnのタブ区切り)。
 
