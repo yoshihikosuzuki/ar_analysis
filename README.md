@@ -72,4 +72,4 @@
 * 10%以上の影響を与えたもののうち、正の影響は590 (旧: 670)個、負の影響は337 (旧: 426)個
  * これらは全データのうち約2%
 
-<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/0fd33507-3987-98f0-a567-e3c2569bd1b2.jpeg width=600px>
+<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/0fd33507-3987-98f0-a567-e3c2569bd1b2.jpeg width=1000px>
