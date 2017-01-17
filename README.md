@@ -94,6 +94,8 @@ CAR >= 10% のPRについて、各単語のtf-idfを計算(定義等はipynbを�
 
 <img src=https://qiita-image-store.s3.amazonaws.com/0/81825/fdc5eee9-afdb-585f-341e-2558e526f638.jpeg width=300px>
 
+因果関係は無視したとしても、
+
 * URLを入れると株価が上がる？
 * "東京"・"本社"があると株価が上がる？
 * 2008年・2009年だと株価が上がった？？
