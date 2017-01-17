@@ -86,7 +86,13 @@ CAR >= 10% のPRについて、各単語のtf-idfを計算(定義等はipynbを�
 ```
 ↑各値の説明
 
+#### 全タイプのデータ
+
 <img src=https://qiita-image-store.s3.amazonaws.com/0/81825/38c8cf98-df4b-d2ac-039c-54ac369a3cf3.jpeg width=300px>
+
+#### "01: Product"に限定したデータ
+
+<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/fdc5eee9-afdb-585f-341e-2558e526f638.jpeg width=300px>
 
 ### doc2vecを使った分析
 
