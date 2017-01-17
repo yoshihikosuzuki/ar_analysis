@@ -75,6 +75,12 @@
 
 <img src=https://qiita-image-store.s3.amazonaws.com/0/81825/0fd33507-3987-98f0-a567-e3c2569bd1b2.jpeg width=1000px>
 
-### doc2vecを使った簡単な分析
+### doc2vecを使った分析
 
 articleid: CARの情報がある時に、articleid -> bodysub -> doc2vec(bodysub): CARとして、プレスリリース本文とCARの値の関係性を述べたい。
+
+* `Doc2Vec.ipynb`
+ * 全てのプレスリリース本文をMeCabで形態素に分割し、doc2vecの学習を行う
+ * CARが存在するプレスリリースのベクトル表現を出力
+* `*.ipynb`
+ * 入力: プレスリリースのベクトル表現、教師データ: CARで学習器を作成
