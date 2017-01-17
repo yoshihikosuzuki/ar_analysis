@@ -75,6 +75,12 @@
 
 <img src=https://qiita-image-store.s3.amazonaws.com/0/81825/0fd33507-3987-98f0-a567-e3c2569bd1b2.jpeg width=1000px>
 
+### tf-idf (`Calculate tf-idf.ipynb`)
+
+CAR >= 10% のPRについて、各単語のtf-idfを計算(定義等はipynbを参照)。
+
+<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/38c8cf98-df4b-d2ac-039c-54ac369a3cf3.jpeg width=300px>
+
 ### doc2vecを使った分析
 
 articleid: CARの情報がある時に、articleid -> bodysub -> doc2vec(bodysub): CARとして、プレスリリース本文とCARの値の関係性を述べたい。
