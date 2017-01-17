@@ -79,6 +79,12 @@
 
 CAR >= 10% のPRについて、各単語のtf-idfを計算(定義等はipynbを参照)。
 
+```
+全PR数 CAR >= 10%のPR数
+単語 tf-idf 全PRのうちその単語が出現した数 高CARのPRのうちその単語が出現した数
+…
+```
+
 <img src=https://qiita-image-store.s3.amazonaws.com/0/81825/38c8cf98-df4b-d2ac-039c-54ac369a3cf3.jpeg width=300px>
 
 ### doc2vecを使った分析
