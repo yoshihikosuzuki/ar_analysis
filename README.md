@@ -77,17 +77,24 @@
 
 ### tf-idf (`Calculate tf-idf.ipynb`)
 
-CAR >= 10% のPRについて、各単語のtf-idfを計算した。
+CARが高いようなPRについて、各単語のtf-idfを計算した。
 
 (ipynbの数式がgithubだと一部表示されなくなっているので後で修正、もしくは生データのlatexを参照)
 
 ```
-全PR数 CAR>=10%のPR数
-単語 tf-idf 全PRのうちその単語が出現した数 高CARのPRのうちその単語が出現した数
+全PR数 高CAR群のPR数
+単語 tf-idf 全PRのうちその単語が出現した数 高CAR群のPRのうちその単語が出現した数
 …
 ```
 ↑各値の説明
 
+#### "01: Product", CAR = 0% もしくは 1.48% (75% quantile) で分割
+
+|0%|1.48%|
+|:-:|:-:|
+|<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/1cbbdef3-23de-9be0-9979-a7abf4ace775.jpeg>|<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/2cbce839-40e2-dd8a-9bda-888ed93efc29.jpeg>|
+
+```
 #### 全タイプのデータ(`tfidf.all`)
 
 <img src=https://qiita-image-store.s3.amazonaws.com/0/81825/38c8cf98-df4b-d2ac-039c-54ac369a3cf3.jpeg width=300px>
@@ -102,6 +109,7 @@ CAR >= 10% のPRについて、各単語のtf-idfを計算した。
 * "東京"・"本社"があると株価が上がる？
 * 2008年・2009年だと株価が上がった？？
 * "代表"・"取締役"を書くと株価が上がる？？？
+```
 
 ### doc2vecを使った分析
 
