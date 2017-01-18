@@ -90,6 +90,8 @@ CARが高いようなPRについて、各単語のtf-idfを計算した。
 
 #### "01: Product", CAR = 0% もしくは 1.48% (75% quantile) で分割
 
+tf-idfの値はかなり小さくなってしまった(高CAR群が全PRに含まれるので厳密にはよくないが、Fisherの正確確率検定で有意差が出ない程度)が、解釈としてはしやすくなった？
+
 |0%|1.48%|
 |:-:|:-:|
 |<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/1cbbdef3-23de-9be0-9979-a7abf4ace775.jpeg hight=600px>|<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/2cbce839-40e2-dd8a-9bda-888ed93efc29.jpeg hight=600px>|
