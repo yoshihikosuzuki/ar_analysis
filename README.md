@@ -102,7 +102,7 @@ tf-idfの値はかなり小さくなってしまった(高CAR群が全PRに含�
 (旧データ)
 |0%|1.48%|
 |:-:|:-:|
-|<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/1cbbdef3-23de-9be0-9979-a7abf4ace775.jpeg hight=100px>|<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/2cbce839-40e2-dd8a-9bda-888ed93efc29.jpeg hight=100px>|
+|<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/1cbbdef3-23de-9be0-9979-a7abf4ace775.jpeg width=100px>|<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/2cbce839-40e2-dd8a-9bda-888ed93efc29.jpeg width=100px>|
 
 ```
 #### 全タイプのデータ(`tfidf.all`)
