@@ -4,6 +4,20 @@
 
 ### データ
 
+|データ|ファイル名(自分用)|データ数|その他|
+|:-:|:-:|:-:|:-:|
+|日経プレスリリース|pressrelease_all_normalized.csv||articleid, date, bodysubのタブ区切り|
+|上場企業|listed_company_normalized||comp_name, address, sec_codeのタブ区切り|
+|東証一部の株価|kabuka_tse1||マーケットデータがTOPIXしかなかったため|
+|TOPIX|market_tse1|||
+
+---
+---
+
+(以下2016年度の古い解析内容)
+
+### データ
+
 `Reshape data.ipynb`で整形した。各種データ数等はipynbに記載してある。
 今回の株価データには株価指数がTOPIXしかなかったので、解析対象は東証一部上場企業に限定した(`listed_company`自体には全ての上場企業が含まれている)。
 
