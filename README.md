@@ -4,12 +4,19 @@
 
 ### データ
 
-|データ|ファイル名(自分用)|データ数|その他|
+|種類|ファイル名(自分用)|データ数|その他|
 |:-:|:-:|:-:|:-:|
-|日経プレスリリース|pressrelease_all_normalized.csv||articleid, date, bodysubのタブ区切り|
-|上場企業|listed_company_normalized||comp_name, address, sec_codeのタブ区切り|
-|東証一部の株価|kabuka_tse1||マーケットデータがTOPIXしかなかったため|
-|TOPIX|market_tse1|||
+|日経プレスリリース|pressrelease_all_normalized.csv|336297 (PR)|articleid, date, bodysubのタブ区切り<br>2003~2014年|
+|日経プレスリリース分類|pressrelease_info.csv|354691 (PR)|池内さんに頂いたもの|
+|上場企業|listed_company_normalized|3567 (社)|comp_name, address, sec_codeのタブ区切り|
+|東証一部の株価|kabuka_tse1|1788 (社)|マーケットデータがTOPIXしかなかったため<br>欠損値あり|
+|TOPIX|market_tse1|1||
+
+### プレスリリース-企業マッチング
+
+`address-matching`レポジトリを参照。
+
+### Cumulative Abnormal Return (CAR)計算
 
 ---
 ---
