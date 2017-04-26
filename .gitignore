@@ -1,6 +1,7 @@
 .ipynb_checkpoints/
-PythonFinance/
-data/
-doc2vec.*
-out
-pr_mor
+old/PythonFinance/
+old/data/
+old/doc2vec.*
+old/out
+old/pr_mor
+fix_input_data/
