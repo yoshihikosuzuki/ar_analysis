@@ -8,9 +8,12 @@
 |:-:|:-:|:-:|:-:|
 |日経プレスリリース|pressrelease_all_normalized.csv|336297 (PR)|articleid, date, bodysubのタブ区切り<br>2003~2014年|
 |日経プレスリリース分類|pressrelease_info.csv|354691 (PR)|池内さんに頂いたもの|
-|上場企業|listed_company_normalized|3567 (社)|comp_name, address, sec_codeのタブ区切り|
+|上場企業|listed_company|3564 (社)|comp_name, address, sec_codeのタブ区切り|
 |東証一部の株価|kabuka_tse1|1788 (社)|マーケットデータがTOPIXしかなかったため<br>欠損値あり|
 |TOPIX|market_tse1|1||
+
+* 英数字・記号は全て半角にしてある
+* 上場企業のうち、住所のデータが無かった3社は省いた
 
 ### プレスリリース-企業マッチング
 
