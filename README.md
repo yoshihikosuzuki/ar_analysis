@@ -15,7 +15,6 @@
 |TOPIX|market_tse1|1||
 
 ## プレスリリース-企業マッチング
->>>>>>> 2739438d6007a7f73f2f7f871530db7f884d05b7
 
 `address-matching`レポジトリを参照(その中の`src/all.out.matching`がマッチング結果。列名などは以下を参照)。
 
