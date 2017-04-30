@@ -2,7 +2,9 @@
 
 プレスリリースのアブノーマルリターンに関する解析
 
-### データ
+(前回(2016年度)の古い解析内容はREADMEも含めて全て`old/`ディレクトリ以下に移動しました。)
+
+## データ
 
 |種類|ファイル名(自分用)|データ数|その他|
 |:-:|:-:|:-:|:-:|
@@ -12,145 +14,39 @@
 |東証一部の株価|kabuka_tse1|1788 (社)|マーケットデータがTOPIXしかなかったため<br>欠損値あり|
 |TOPIX|market_tse1|1||
 
-* 英数字・記号は全て半角にしてある
-* 上場企業のうち、住所のデータが無かった3社は省いた
+## プレスリリース-企業マッチング
+>>>>>>> 2739438d6007a7f73f2f7f871530db7f884d05b7
 
-### プレスリリース-企業マッチング
+`address-matching`レポジトリを参照(その中の`src/all.out.matching`がマッチング結果。列名などは以下を参照)。
 
-`address-matching`レポジトリを参照。
+結果の数は以前の336,271 -> 72,040と大幅に減ったが、見た感じ精度良く(precision高く)マッチングできていそう。
 
-### Cumulative Abnormal Return (CAR)計算
+#### マッチング結果(`https://github.com/yoshihikosuzuki/address-matching/blob/master/src/all.out.matching`)について
 
----
----
+|'article_id'|'date'|'sentence'|'comp_code'|'comp_name'|'address_pr'|'add_ress_lc'|'score'|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|プレスリリースのID|PRの日付|PRの住所の直前40文字|上場企業の証券コード|企業名|PRから抽出した住所|上場企業の住所|スコア(上のレポジトリ参照)|
+|NIKPRLRSP038060_07012003|20030107|着信メロディ配信サービスヤマハ『美麗鈴(メロリン)』を開始ヤマハ株式会社(本社:|7951|ヤマハ|静岡県 None 浜松市 中区 中沢町 None None 10 1 None None|静岡県 None 浜松市 中区 中沢町 None None 10 1 None None|9|
 
-(以下2016年度の古い解析内容)
+## Cumulative Abnormal Return (CAR)計算
 
-### データ
+回帰までは以前と同じで、回帰のp値も一緒に`calc_car/car.all`に出力。
 
-`Reshape data.ipynb`で整形した。各種データ数等はipynbに記載してある。
-今回の株価データには株価指数がTOPIXしかなかったので、解析対象は東証一部上場企業に限定した(`listed_company`自体には全ての上場企業が含まれている)。
+27,840個の結果が得られた(前回は47,301個)。
 
-* `pressrelease_all.csv`
- * 全てのプレスリリースのデータ(articleid, date, bodysubのタブ区切り)
-* `listed_company`
- * 上場企業(企業名辞書で証券コードが存在する企業)のデータ(comp_name, address, sec_codeのタブ区切り)
-* `kabuka_tse1`
- * 東証一部の株価データ(マーケットデータがTOPIXしかなかったので東証一部に限定した)
-* `market_tse1`
- * TOPIXデータ
+#### CAR結果(`https://github.com/yoshihikosuzuki/address-matching/blob/master/src/all.out.matching`)について
 
-```txt:昔の情報
-### プレスリリースと上場企業のマッチング(`Matching.ipynb`)
+|article_id|PR_type|comp_code|CAR|R-value|p-value|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|PRのID|PRの種類|証券コード|CAR|相関係数|p値|
+|NIKPRLRSP117970_09122005|05: PR|1812|-0.0322159540276|0.710436457798|1.19732463497e-34|
 
-現状では、上場企業のデータをもとにプレスリリースに完全一致検索をかける方針で行っている。出力は`matchings`。
+*現在は相関係数とp値はexpectedの計算に用いたものになっている(つまり、(-246, -30)[日]の区間; 本当は(-1, 1)の区間の有意差を見たいが、3点で大丈夫か？)。
 
-1. 企業名は企業名辞書のものをそのまま使用し、完全一致でヒットとする
-2. 住所は企業名辞書のものを正規化した後、市区町村名だけを(最大2つ)抽出し、どれか1つでも完全一致したらヒットとする
- * 住所を記載する場合、都道府県名は無くても理解できる場合がああるが、市区町村名を全て書かないと意味がほとんどないという仮定に基づく
- * また、都道府県名だと関係のないヒットがありそうだが、市区町村名だとその可能性が低そうだという理由もある
-3. 企業名・住所ともにヒットしたら結果に追加する
- 
-#### 改善した方が良さそうな点
+(一応ほとんど同じコードで計算しているはずですが、念のため`calc_car/Calculate CAR.ipynb`を確認して頂けますと幸いです。)
 
-* 企業名の揺らぎ
- * 英語表記とカタカナ表記
- * `・`等
- * `株式会社`、`ホールディングス`等 -> 取り除いてから検索？池内さんの`func_nayose.R`が使えるはず
-* 住所の揺らぎ
- * プレスリリース本文から住所を表す部分だけを抽出できれば、お互いの正規化の結果同士で比較するのが最善か
-* `headline`にしか企業名が含まれないものや、企業名だけで住所を含まないものが散見される
-* 短くて複雑度の低い企業名で、かつ住所が都内だったりするとfalse-positive hitが起こりやすい
- * "高島", "ランド", "アーク"といった比較的よくある企業名で見られた
- * 都内は区名の次まで検索したいが、区名までしか記載していないことも多い。。
- * 企業名と住所が近くにあることの判定？思い切って複雑度の低い名前を持つ企業を取り除く？
-```
+(TODO: 東証一部以外の企業についても(TOPIXを使って？)CARを同様に計算する)
 
-### 新しいマッチング(`New matching.ipynb`)
+## CAR結果について
 
-池内さんから頂いた`prdata_subj_db.csv`に各プレスリリースの企業名情報(`subj`)があったので、それを使用することにした。
-
-* 住所は用いず、`subj`をそのままマッチング結果とした
-* アブノーマルリターンを計算する際に、`subj`が上場企業名リストに存在していなかったら排除している
-
-### アブノーマルリターンの計算(`Calculate abnormal return.ipynb`、新: `New calculate CAR.ipynb`)
-
-* (プレスリリースが出た)日付を指定すると、その日を0として、(-246, -30)[日]の区間と(-1, 1)の区間でのその企業とTOPIXの株価データからアブノーマルリターンを計算
- * 企業の株価データには(非取引日以外でも)欠損値を含むものがあるが、日数は欠損値を除いて計上した(日付はTOPIXと合わせてある)
-* アブノーマルリターン計算には[PythonFinance](https://github.com/danielfrg/PythonFinance)の`events/EventStudy.py`を参考にした
- 1. (欠損値を除いた)前日との株価の比(return)を計算
- 2. (-246, -30)のreturnデータでTOPIX - 企業間の線形回帰モデル作成
- 3. モデルを(-1, 1)に適用し、指定された日付前後のexpected returnを計算
- 4. 実際のreturnとの差を取り(abnormal return)、その(-1, 1)での和(cumulative abnormal return)を返す
-* 手法として古い可能性がある？
-* **同一日、同一企業に複数のプレスリリースがある場合に考慮できていない**
-
-計算結果は`car.new`に記載(プレスリリースID、タイプ、証券コード、cumulative abnormal returnのタブ区切り)。
-
-### アブノーマルリターンの値に関する簡単な分析(`Plot car results.ipynb`、新: `New analyze CAR .ipynb`)
-
-* 全部で47301 (旧: 41950)データ
-* 頻度分布 -> 正規分布との相違
- * 中心はほぼ0%で、尖った形状
-* 最大値、最小値はそれぞれ920% (旧: 70%), -110%
-* 10%以上の影響を与えたもののうち、正の影響は590 (旧: 670)個、負の影響は337 (旧: 426)個
- * これらは全データのうち約2%
-* 平均値の降順に各タイプを並べたものは以下の表の通り
-
-<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/bc8e700f-dbfc-d722-c214-e086cb5815aa.jpeg width=1000px>
-
-旧データ(クリックで拡大)
-<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/0fd33507-3987-98f0-a567-e3c2569bd1b2.jpeg width=100px>
-
-### tf-idf (`Calculate tf-idf.ipynb`)
-
-CARが高いようなPRについて、各単語のtf-idfを計算した。
-
-(ipynbの数式がgithubだと一部表示されなくなっているので後で修正、もしくは生データのlatexを参照)
-
-```
-全PR数 高CAR群のPR数
-単語 tf-idf 全PRのうちその単語が出現した数 高CAR群のPRのうちその単語が出現した数
-…
-```
-↑各値の説明
-
-#### "01: Product", CAR = 0% もしくは 1.51% (75% quantile) で分割
-
-tf-idfの値はかなり小さくなってしまった(高CAR群が全PRに含まれるので厳密にはよくないが、Fisherの正確確率検定で有意差が出ない程度)が、解釈としては？
-
-|0%|1.51%|
-|:-:|:-:|
-|<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/ebb70d9b-da9d-99d5-5fa7-b83cabc6251b.jpeg hight=100px>|<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/9ad19c1b-506b-82c0-cae4-a0a9c1cc868f.jpeg hight=100px>|
-
-(旧データ)
-|0%|1.48%|
-|:-:|:-:|
-|<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/1cbbdef3-23de-9be0-9979-a7abf4ace775.jpeg width=100px>|<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/2cbce839-40e2-dd8a-9bda-888ed93efc29.jpeg width=100px>|
-
-```
-#### 全タイプのデータ(`tfidf.all`)
-
-<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/38c8cf98-df4b-d2ac-039c-54ac369a3cf3.jpeg width=300px>
-
-#### "01: Product"に限定したデータ(`tfidf.product`)
-
-<img src=https://qiita-image-store.s3.amazonaws.com/0/81825/fdc5eee9-afdb-585f-341e-2558e526f638.jpeg width=300px>
-
-因果関係は無視したとしても、
-
-* URLを入れると株価が上がる？
-* "東京"・"本社"があると株価が上がる？
-* 2008年・2009年だと株価が上がった？？
-* "代表"・"取締役"を書くと株価が上がる？？？
-```
-
-### doc2vecを使った分析
-
-articleid: CARの情報がある時に、articleid -> bodysub -> doc2vec(bodysub): CARとして、プレスリリース本文とCARの値の関係性を述べたい。
-
-* `Doc2Vec.ipynb`
- * 全てのプレスリリース本文をMeCabで形態素に分割し、doc2vecの学習を行う
- * CARが存在するプレスリリースのベクトル表現を出力
-* `*.ipynb`
- * 入力: プレスリリースのベクトル表現、教師データ: CARで学習器を作成
+`R-value > 0 and p-value < 0.05`なるエントリーを"有意群"とする。その他は"非有意群"。
