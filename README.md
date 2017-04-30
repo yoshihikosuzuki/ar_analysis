@@ -2,7 +2,7 @@
 
 プレスリリースのアブノーマルリターンに関する解析
 
-### データ
+## データ
 
 |種類|ファイル名(自分用)|データ数|その他|
 |:-:|:-:|:-:|:-:|
@@ -12,9 +12,11 @@
 |東証一部の株価|kabuka_tse1|1788 (社)|マーケットデータがTOPIXしかなかったため<br>欠損値あり|
 |TOPIX|market_tse1|1||
 
-### プレスリリース-企業マッチング
+## プレスリリース-企業マッチング
 
-`address-matching`レポジトリを参照(その中の`src/all.out.matching`がマッチング結果。列名などは以下を参照)。結果の数は以前の336,271 -> 72040と大幅に減ったが、見た感じ精度良く(specificity高く)マッチングできていそう。
+`address-matching`レポジトリを参照(その中の`src/all.out.matching`がマッチング結果。列名などは以下を参照)。
+
+結果の数は以前の336,271 -> 72,040と大幅に減ったが、見た感じ精度良く(specificity高く)マッチングできていそう。
 
 ### マッチング結果(`https://github.com/yoshihikosuzuki/address-matching/blob/master/src/all.out.matching`)について
 
@@ -23,7 +25,7 @@
 |プレスリリースのID|PRの日付|PRの住所の直前40文字|上場企業の証券コード|企業名|PRから抽出した住所|上場企業の住所|スコア(上のレポジトリ参照)|
 |NIKPRLRSP038060_07012003|20030107|着信メロディ配信サービスヤマハ『美麗鈴(メロリン)』を開始ヤマハ株式会社(本社:|7951|ヤマハ|静岡県 None 浜松市 中区 中沢町 None None 10 1 None None|静岡県 None 浜松市 中区 中沢町 None None 10 1 None None|9|
 
-### Cumulative Abnormal Return (CAR)計算
+## Cumulative Abnormal Return (CAR)計算
 
 回帰までは以前と同じで、回帰のp値も一緒に出力する。
 
