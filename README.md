@@ -46,7 +46,9 @@
 
 [ここ](http://dss.princeton.edu/online_help/stats_packages/stata/eventstudy.html#car)にしたがってCARの検定を行う。
 
-CAR = sum of AR なので、検定のためのaveraged AR (AAR) = CAR / window size (= 3)でよい(検定力は大丈夫か？)。
+CAR = sum of AR なので、検定のためのaveraged AR (AAR) = CAR / window size (= 3)でよい(検定力がダメそう)。
+
+そもそも、このt検定だと「PR発表日前後での株価上昇」を見ていないことになる。。むしろ回帰の方がよい？
 
 ## TODO
 
