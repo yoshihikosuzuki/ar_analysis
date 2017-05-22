@@ -12,7 +12,7 @@
 |日経プレスリリース分類|pressrelease_info.csv|354691 (PR)|池内さんに頂いたもの|
 |上場企業|listed_company|3564 (社)|comp_name, address, sec_codeのタブ区切り|
 |東証一部の株価|kabuka_tse1|1788 (社)|マーケットデータがTOPIXしかなかったため<br>欠損値あり|
-|TOPIX|market_tse1|1||
+|TOPIX|market_tse1|||
 
 ## プレスリリース-企業マッチング
 
@@ -20,7 +20,7 @@
 
 結果の数は以前の336,271 -> 72,040と大幅に減ったが、見た感じ精度良く(precision高く)マッチングできていそう。
 
-#### マッチング結果(`https://github.com/yoshihikosuzuki/address-matching/blob/master/src/all.out.matching`)について
+#### マッチング結果(`https://github.com/yoshihikosuzuki/ar_analysis/blob/master/calc_car/all.out.matching`)について
 
 |'article_id'|'date'|'sentence'|'comp_code'|'comp_name'|'address_pr'|'add_ress_lc'|'score'|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -29,23 +29,31 @@
 
 ## Cumulative Abnormal Return (CAR)計算
 
-以前と同じで、`calc_car/car.all`に出力。27,840個の結果が得られた(前回は47,301個)。
+解析内容は以前と同じ(`calc_car/Calculate CAR.ipynb`を参照)で、`calc_car/car.all`に出力。
 
-CAR = sum of AR なので、検定のためのaveraged AR (AAR) = CAR / window size (= 3)でよい(検定力は大丈夫か？)。
+27,840個の結果が得られた(前回は47,301個)。
 
-#### CAR結果(`https://github.com/yoshihikosuzuki/address-matching/blob/master/src/all.out.matching`)について
+#### CAR結果(`https://github.com/yoshihikosuzuki/ar_analysis/blob/master/calc_car/car.all`)について
 
 |article_id|PR_type|comp_code|CAR|R-value|p-value|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |PRのID|PRの種類|証券コード|CAR|相関係数|p値|
 |NIKPRLRSP117970_09122005|05: PR|1812|-0.0322159540276|0.710436457798|1.19732463497e-34|
-*解析内容は`calc_car/Calculate CAR.ipynb`
-*現在は相関係数とp値はexpectedの計算に用いたものになっている(つまり、(-246, -30)[日]の区間; 本当は(-1, 1)の区間の有意差を見たい
+
+*NOTE:現在は相関係数とp値はexpectedの計算に用いたものになっている(つまり、(-246, -30)[日]の区間; 本当は(-1, 1)の区間の有意差を見たい
 
 ## CAR結果について
 
 [ここ](http://dss.princeton.edu/online_help/stats_packages/stata/eventstudy.html#car)にしたがってCARの検定を行う。
 
+CAR = sum of AR なので、検定のためのaveraged AR (AAR) = CAR / window size (= 3)でよい(検定力は大丈夫か？)。
+
 ## TODO
 
 * 東証一部以外の企業についても、とりあえずTOPIXを使ってCARを同様に計算する
+* CARの検定
+* 有意なCARを持つPR群からキーワード特定
+
+## 雑感
+
+* 「プレスリリース発表前の買い手の期待度」に対するabnormalityの方が実情をより良く捉えている？
