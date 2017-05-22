@@ -29,9 +29,9 @@
 
 ## Cumulative Abnormal Return (CAR)計算
 
-回帰までは以前と同じで、回帰のp値も一緒に`calc_car/car.all`に出力。
+以前と同じで、`calc_car/car.all`に出力。27,840個の結果が得られた(前回は47,301個)。
 
-27,840個の結果が得られた(前回は47,301個)。
+CAR = sum of AR なので、検定のためのaveraged AR (AAR) = CAR / window size (= 3)でよい(検定力は大丈夫か？)。
 
 #### CAR結果(`https://github.com/yoshihikosuzuki/address-matching/blob/master/src/all.out.matching`)について
 
@@ -39,13 +39,13 @@
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |PRのID|PRの種類|証券コード|CAR|相関係数|p値|
 |NIKPRLRSP117970_09122005|05: PR|1812|-0.0322159540276|0.710436457798|1.19732463497e-34|
-
-*現在は相関係数とp値はexpectedの計算に用いたものになっている(つまり、(-246, -30)[日]の区間; 本当は(-1, 1)の区間の有意差を見たいが、3点で大丈夫か？)。
-
-(一応ほとんど同じコードで計算しているはずですが、念のため`calc_car/Calculate CAR.ipynb`を確認して頂けますと幸いです。)
-
-(TODO: 東証一部以外の企業についても(TOPIXを使って？)CARを同様に計算する)
+*解析内容は`calc_car/Calculate CAR.ipynb`
+*現在は相関係数とp値はexpectedの計算に用いたものになっている(つまり、(-246, -30)[日]の区間; 本当は(-1, 1)の区間の有意差を見たい
 
 ## CAR結果について
 
-`R-value > 0 and p-value < 0.05`なるエントリーを"有意群"とする。その他は"非有意群"。
+[ここ](http://dss.princeton.edu/online_help/stats_packages/stata/eventstudy.html#car)にしたがってCARの検定を行う。
+
+## TODO
+
+* 東証一部以外の企業についても、とりあえずTOPIXを使ってCARを同様に計算する
