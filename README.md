@@ -27,10 +27,6 @@
 |プレスリリースのID|PRの日付|PRの住所の直前40文字|上場企業の証券コード|企業名|PRから抽出した住所|上場企業の住所|スコア(上のレポジトリ参照)|
 |NIKPRLRSP038060_07012003|20030107|着信メロディ配信サービスヤマハ『美麗鈴(メロリン)』を開始ヤマハ株式会社(本社:|7951|ヤマハ|静岡県 None 浜松市 中区 中沢町 None None 10 1 None None|静岡県 None 浜松市 中区 中沢町 None None 10 1 None None|9|
 
-(以下近いうちに修正)
-
-```
-
 ## Cumulative Abnormal Return (CAR)計算
 
 解析内容は以前と同じ(`calc_car/Calculate CAR.ipynb`を参照)で、`calc_car/car.all`に出力。
@@ -53,8 +49,6 @@
 CAR = sum of AR なので、検定のためのaveraged AR (AAR) = CAR / window size (= 3)でよい(検定力がダメそう)。
 
 そもそも、このt検定だと「PR発表日前後での株価上昇」を見ていないことになる。。むしろ回帰の方がよい？
-
-```
 
 ## TODO
 
