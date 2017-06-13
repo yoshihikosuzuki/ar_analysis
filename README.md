@@ -42,6 +42,7 @@ CARの検定は(ここ)[http://lipas.uwasa.fi/~bepa/EventStudies.pdf] に従っ�
 |PRのID|PRの種類|証券コード|CAR|p値|AR|
 
 *推定ウィンドウ=(-246, -30)、イベントウィンドウ=(-1, 1)、東証一部のみ、株価欠損値無し
+
 *有意に正なものはXXX個中XXX個
 
 ## TODO
