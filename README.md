@@ -31,7 +31,7 @@
 
 `calc_car/1. Calculation and some plots on AR and CAR.ipynb`に一連の処理およびいくつかの図を書いている。
 
-CARの検定は(ここ)[http://lipas.uwasa.fi/~bepa/EventStudies.pdf]に従った。
+CARの検定は(ここ)[http://lipas.uwasa.fi/~bepa/EventStudies.pdf] に従った。
 
 出力は`calc_car/car.all`。
 
