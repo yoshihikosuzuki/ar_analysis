@@ -29,28 +29,27 @@
 
 ## Cumulative Abnormal Return (CAR)計算
 
-解析内容は以前と同じ(`calc_car/Calculate CAR.ipynb`を参照)で、`calc_car/car.all`に出力。
+`calc_car/1. Calculation and some plots on AR and CAR.ipynb`に一連の処理およびいくつかの図を書いている。
 
-27,840個の結果が得られた(前回は47,301個)。
+CARの検定は(ここ)[http://lipas.uwasa.fi/~bepa/EventStudies.pdf] に従った。
 
-#### CAR結果(`https://github.com/yoshihikosuzuki/ar_analysis/blob/master/calc_car/car.all`)について
+出力は`calc_car/car_exactT_sig`等。`sig`が付いているものは有意なCAR、`not_sig`が付いているものはそれ以外のCAR。
 
-|article_id|PR_type|comp_code|CAR|R-value|p-value|
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|PRのID|PRの種類|証券コード|CAR|相関係数|p値|
-|NIKPRLRSP117970_09122005|05: PR|1812|-0.0322159540276|0.710436457798|1.19732463497e-34|
+#### CAR結果(`https://github.com/yoshihikosuzuki/ar_analysis/blob/master/calc_car/car_exactT_sig`等)について
 
-*NOTE:現在は相関係数とp値はexpectedの計算に用いたものになっている(つまり、(-246, -30)[日]の区間; 本当は(-1, 1)の区間の有意差を見たい
+|article_id|PR_type|comp_code|CAR|t-statistics|
+|:-:|:-:|:-:|:-:|:-:|
+|PRのID|PRの種類|証券コード|CAR|t値|
+|NIKPRLRSP050445_10072003|01: Product|7911|0.10449131277743914|2.325275468404645|
 
-## CAR結果について
+* 推定ウィンドウ=(-246, -30)、イベントウィンドウ=(-1, 1)、東証一部のみ、株価欠損値無し、片側5%で検定
+  * => 有意に正なものは26845個中351個(1.3%) (`car_exactT_sig`)
+* 片側10%で検定すると、708個(2.6%) (`car_exactT_alpha0.1_sig`)
 
-[ここ](http://dss.princeton.edu/online_help/stats_packages/stata/eventstudy.html#car)にしたがってCARの検定を行う。
+## TF-IDFによるキーワード解析
 
-CAR = sum of AR なので、検定のためのaveraged AR (AAR) = CAR / window size (= 3)でよい(検定力がダメそう)。
-
-そもそも、このt検定だと「PR発表日前後での株価上昇」を見ていないことになる。。むしろ回帰の方がよい？
+有意なCARに特徴的な単語が存在するかどうか。
 
 ## TODO
 
 * 東証一部以外の企業についても、とりあえずTOPIXを使ってCARを同様に計算する
-* 有意なCARを持つPR群からキーワード特定
