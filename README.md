@@ -33,19 +33,23 @@
 
 CARの検定は(ここ)[http://lipas.uwasa.fi/~bepa/EventStudies.pdf] に従った。
 
-出力は`calc_car/car.all`。
+出力は`calc_car/car_exactT_sig`等。`sig`が付いているものは有意なCAR、`not_sig`が付いているものはそれ以外のCAR。
 
-#### CAR結果(`https://github.com/yoshihikosuzuki/ar_analysis/blob/master/calc_car/car.all`)について
+#### CAR結果(`https://github.com/yoshihikosuzuki/ar_analysis/blob/master/calc_car/car_exactT_sig`等)について
 
-|article_id|PR_type|comp_code|CAR|p-value (one-sided; positive)|AR|
+|article_id|PR_type|comp_code|CAR|t-statistics|
 |:-:|:-:|:-:|:-:|:-:|:-:|
-|PRのID|PRの種類|証券コード|CAR|p値|AR|
+|PRのID|PRの種類|証券コード|CAR|t値|
+|NIKPRLRSP050445_10072003|01: Product|7911|0.10449131277743914|2.325275468404645|
 
-*推定ウィンドウ=(-246, -30)、イベントウィンドウ=(-1, 1)、東証一部のみ、株価欠損値無し
+* 推定ウィンドウ=(-246, -30)、イベントウィンドウ=(-1, 1)、東証一部のみ、株価欠損値無し、片側5%で検定
+  * => 有意に正なものは26845個中351個(1.3%)
+* 片側10%で検定すると、708個(2.6%)
 
-*有意に正なものはXXX個中XXX個
+## TF-IDFによるキーワード解析
+
+有意なCARに特徴的な単語が存在するかどうか。
 
 ## TODO
 
 * 東証一部以外の企業についても、とりあえずTOPIXを使ってCARを同様に計算する
-* 有意なCARを持つPR群からキーワード特定
