@@ -38,13 +38,13 @@ CARの検定は(ここ)[http://lipas.uwasa.fi/~bepa/EventStudies.pdf] に従っ�
 #### CAR結果(`https://github.com/yoshihikosuzuki/ar_analysis/blob/master/calc_car/car_exactT_sig`等)について
 
 |article_id|PR_type|comp_code|CAR|t-statistics|
-|:-:|:-:|:-:|:-:|:-:|:-:|
+|:-:|:-:|:-:|:-:|:-:|
 |PRのID|PRの種類|証券コード|CAR|t値|
 |NIKPRLRSP050445_10072003|01: Product|7911|0.10449131277743914|2.325275468404645|
 
 * 推定ウィンドウ=(-246, -30)、イベントウィンドウ=(-1, 1)、東証一部のみ、株価欠損値無し、片側5%で検定
-  * => 有意に正なものは26845個中351個(1.3%)
-* 片側10%で検定すると、708個(2.6%)
+  * => 有意に正なものは26845個中351個(1.3%) (`car_exactT_sig`)
+* 片側10%で検定すると、708個(2.6%) (`car_exactT_alpha0.1_sig`)
 
 ## TF-IDFによるキーワード解析
 
