@@ -5,4 +5,4 @@ old/doc2vec.*
 old/out
 old/pr_mor
 fix_input_data/
-calc_car/car_*
+doc2vec/
